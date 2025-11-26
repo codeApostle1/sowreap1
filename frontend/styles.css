@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+    padding: 0;
+}
+  body {
+    font-family: Arial;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.center {
+    text-align: center;
+}
+
+.title {
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.form-container {
+    width: 300px;
+    margin: 120px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+}
+
+button, .btn {
+    padding: 12px;
+    width: 100%;
+    background: green;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn {
+    display: block;
+    text-align: center;
+}
+
+.nav {
+    background: green;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu button {
+    background: white;
+    color: black;
+    padding: 5px 10px;
+}
+
+.dropdown {
+    background: white;
+    position: absolute;
+    right: 10px;
+    top: 60px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px gray;
+}
+
+.dropdown a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+#history, #admin-list {
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px gray;
+}

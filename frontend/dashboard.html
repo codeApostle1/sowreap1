@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="nav">
+    <h2>User Dashboard</h2>
+
+    <div class="menu">
+        <button onclick="toggleMenu()">☰</button>
+        <div id="dropdown" class="dropdown hidden">
+            <a href="dashboard.html">Home</a>
+            <a href="#" onclick="loadHistory()">My History</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h3>Enter Contribution</h3>
+
+    <input id="amount" placeholder="Amount">
+    <input id="note" placeholder="Optional Note">
+
+    <button onclick="addPayment()">Submit</button>
+
+    <div id="history"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
