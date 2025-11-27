@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Total Contribution History</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+
+<body>
+
+<div class="nav">
+    <h2>Total History</h2>
+
+    <div class="menu">
+        <button onclick="toggleMenu()">☰</button>
+        <div id="dropdown" class="dropdown hidden">
+            <a href="dashboard.html">Home</a>
+            <a href="total-history.html">Total History</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h3>All Approved Contributions</h3>
+
+    <div id="totalList"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    loadTotalHistory();
+</script>
+
+</body>
+</html>

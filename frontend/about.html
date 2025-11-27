@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About This App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .about-box {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .account-box {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 6px solid green;
+        }
+
+        .copy-btn {
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .copy-btn:active {
+            opacity: 0.6;
+        }
+
+        .small-text {
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <h2>About This App</h2>
+
+        <div class="menu">
+            <button onclick="toggleMenu()">☰</button>
+            <div id="dropdown" class="dropdown hidden">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="total-history.html">Total History</a>
+                <a href="chart.html">Contribution Chart</a>
+                <a href="about.html">About</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-box">
+        <h3>About This App</h3>
+        <p>
+          The main Goal of This app is to Save for Mum's birthday
+            This app was created to make contribution tracking simple, fast, and transparent.
+            Users can send contributions, view history, check totals, and admins can approve transfers.
+            Everything updates in real-time.
+        </p>
+    </div>
+
+    <div class="account-box">
+        <h3>Send Your Contribution</h3>
+
+        <p class="small-text">Account Number:</p>
+        <h2 id="acctNum">5153077670</h2>
+
+        <p class="small-text">Bank:</p>
+        <h3>Moniepoint</h3>
+
+        <p class="small-text">Account Name:</p>
+        <h3>Joel Temitope Ademola</h3>
+
+        <button class="copy-btn" onclick="copyAccount()">Copy Account Number</button>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        function copyAccount() {
+            let acct = document.getElementById("acctNum").innerText;
+
+            navigator.clipboard.writeText(acct).then(() => {
+                alert("Account number copied!");
+            });
+        }
+    </script>
+</body>
+</html>

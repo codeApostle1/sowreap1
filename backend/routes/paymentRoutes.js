@@ -47,6 +47,21 @@ router.get("/all", auth, async (req, res) => {
   res.json(payments);
 });
 
+//USERS CAN SEE FULL history
+router.get("/global", auth, async (req, res) => {
+  // Users see only approved payments
+  const payments = await Payment.find({ approved: true }).populate("user", "name");
+  res.json(payments);
+});
+
+
+///VIEW LIVE payments
+router.get("/approved", auth, async (req, res) => {
+  const payments = await Payment.find({ approved: true });
+  const total = payments.reduce((sum, p) => sum + p.amount, 0);
+  res.json({ total });
+});
+
 // RESET ALL RECORDS
 router.delete("/reset", auth, async (req, res) => {
   if (req.user.role !== "admin")

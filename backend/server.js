@@ -13,4 +13,10 @@ connectDB();
 app.use("/auth", authRoutes);
 app.use("/payment", paymentRoutes);
 
-app.listen(5000, () => console.log("Server running on 5000"));
+const path = require("path");
+
+// Serve frontend folder
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+
+app.listen(5000, "0.0.0.0" , () => console.log("Server running on 5000"));

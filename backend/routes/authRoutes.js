@@ -3,6 +3,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
+const auth = require("../middleware/authMiddleware");
 
 // SIGN UP
 router.post("/signup", async (req, res) => {
@@ -33,3 +34,33 @@ router.post("/login", async (req, res) => {
 });
 
 module.exports = router;
+
+///CHANGE password
+router.post("/change-password", auth, async (req, res) => {
+    const { oldPassword, newPassword } = req.body;
+
+    if (!oldPassword || !newPassword) {
+        return res.status(400).json({ msg: "All fields are required" });
+    }
+
+    // get logged in user
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+        return res.status(404).json({ msg: "User not found" });
+    }
+
+    // check old password
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+    if (!isMatch) {
+        return res.status(400).json({ msg: "Old password is incorrect" });
+    }
+
+    // save new password
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPassword, salt);
+
+    await user.save();
+
+    res.json({ msg: "Password changed successfully" });
+});
