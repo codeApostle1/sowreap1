@@ -19,4 +19,4 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 
-app.listen(5000, "0.0.0.0" , () => console.log("Server running on 5000"));
+app.listen(5000, () => console.log("Server running on 5000"));
