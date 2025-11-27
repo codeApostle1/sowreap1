@@ -1,4 +1,4 @@
-const API = "http://10.45.142.220:5000";
+const API = "https://sowreap2.onrender.com";
 
 ////// LOGIN + SIGNUP + TOKEN SAVE
 
