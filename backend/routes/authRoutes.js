@@ -8,6 +8,15 @@ const auth = require("../middleware/authMiddleware");
 // SIGN UP
 router.post("/signup", async (req, res) => {
   const { name, password } = req.body;
+  
+  //does user exis?
+  
+  const existing = await user.fineOne({name})
+  if(existing){
+    return res.status(400).json({msg: "user exists already"});
+  }
+  
+  
   let role = "user";
 
   if (name === "Joel" || name === "Ademola") {
