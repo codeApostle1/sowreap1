@@ -6,27 +6,56 @@ const router = express.Router();
 const auth = require("../middleware/authMiddleware");
 
 // SIGN UP
+// router.post("/signup", async (req, res) => {
+//   const { name, password } = req.body;
+  
+//   //does user exis?
+  
+//   const existing = await user.fineOne({name})
+//   if(existing){
+//     return res.status(400).json({msg: "user exists already"});
+//   }
+  
+  
+//   let role = "user";
+
+//   if (name === "Joel" || name === "Ademola") {
+//     role = "admin"; // simple algorithm to make you admin
+//   }
+
+//   const hashed = await bcrypt.hash(password, 10);
+//   const user = await User.create({ name, password: hashed, role });
+//   res.json({ msg: "Account created" });
+// });
+
+//SIGN UP
+// SIGN UP
 router.post("/signup", async (req, res) => {
   const { name, password } = req.body;
-  
-  //does user exis?
-  
-  const existing = await user.fineOne({name})
-  if(existing){
-    return res.status(400).json({msg: "user exists already"});
+
+  // 1️⃣ Check if user exists
+  const existing = await User.findOne({ name });
+
+  if (existing) {
+    return res.status(400).json({ msg: "User already exists" });
   }
-  
-  
+
+  // 2️⃣ Set role
   let role = "user";
-
   if (name === "Joel" || name === "Ademola") {
-    role = "admin"; // simple algorithm to make you admin
+    role = "admin";
   }
 
+  // 3️⃣ Hash password
   const hashed = await bcrypt.hash(password, 10);
-  const user = await User.create({ name, password: hashed, role });
+
+  // 4️⃣ Create user
+  await User.create({ name, password: hashed, role });
+
   res.json({ msg: "Account created" });
 });
+
+
 
 // LOGIN
 router.post("/login", async (req, res) => {
